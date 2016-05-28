@@ -1,0 +1,9 @@
+Title Screen
+./Resource/TitleScreen.png
+1
+Title
+./Resource/Title.png
+1
+Enter
+./Resource/Enter.png
+1
