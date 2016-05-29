@@ -76,7 +76,6 @@ void GameManager::GameLoop(int frame_rate)
 			glutMainLoopEvent();
 			// Update the scene;
 			update(t, time_per_frame);
-		//	cout << "updated" << endl;
 			// update the time
 			accumulator -= time_per_frame;
 			t += time_per_frame;

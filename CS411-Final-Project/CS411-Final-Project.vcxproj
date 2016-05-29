@@ -33,6 +33,7 @@
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Bomberman.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="KeyboardManager.h" />

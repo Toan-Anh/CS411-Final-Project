@@ -22,10 +22,4 @@ public:
 	virtual void ApplyMatrix(Matrix const & matrix);
 	virtual void Update();
 	virtual void Draw();
-	
-	virtual void move_left() {};
-	virtual void move_right() {};
-	virtual void move_up() {};
-	virtual void move_down() {};
-	virtual void put_boom() {};
 };

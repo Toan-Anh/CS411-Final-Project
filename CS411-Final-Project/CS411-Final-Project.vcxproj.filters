@@ -45,10 +45,10 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Bomberman.cpp">
+    <ClCompile Include="Scene_Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Menu.cpp">
+    <ClCompile Include="Bomberman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,10 +83,13 @@
     <ClInclude Include="Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Scene_Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Bomberman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_Menu.h">
+    <ClInclude Include="Bomb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
