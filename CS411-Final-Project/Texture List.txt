@@ -43,3 +43,12 @@ Bomb
 Explosion
 ./Resource/Explosion.png
 1
+Grass
+./Resource/Tile/grass.png
+0
+Wood
+./Resource/Tile/wood.png
+0
+Wall
+./Resource/Tile/brick.png
+0
