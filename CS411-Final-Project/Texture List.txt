@@ -22,3 +22,12 @@ Button Selected
 Button Locked
 ./Resource/Button/ButtonLocked.png
 1
+Bomberman_down
+./Resource/BombermanMove/man_down.png
+1
+Bomberman_trydown
+./Resource/BombermanMove/man_try_down1.png
+1
+Bomberman_trydown
+./Resource/BombermanMove/man_try_down2.png
+1

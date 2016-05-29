@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bomberman.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="KeyboardManager.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bomberman.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="KeyboardManager.h" />
     <ClInclude Include="Matrix.h" />
