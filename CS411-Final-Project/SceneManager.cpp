@@ -1,7 +1,7 @@
 #include "SceneManager.h"
 
 stack<Scene*> SceneManager::_scenes;
-unsigned char SceneManager::buffer[640 * 480 * 4];
+unsigned char SceneManager::buffer[WIDTH_WINDOW_SCREEN * HEIGHT_WINDOW_SCREEN * 4];
 
 SceneManager::SceneManager()
 {
@@ -48,11 +48,11 @@ void SceneManager::CleanUp()
 void SceneManager::SnapShot()
 {
 	glReadBuffer(GL_FRONT);
-	glReadPixels(0, 0, 640, 480, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+	glReadPixels(0, 0, WIDTH_WINDOW_SCREEN, HEIGHT_WINDOW_SCREEN, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
 }
 
 void SceneManager::DrawSnapShot()
 {
 	glRasterPos2i(0, 0);
-	glDrawPixels(640, 480, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+	glDrawPixels(WIDTH_WINDOW_SCREEN, HEIGHT_WINDOW_SCREEN, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
 }
