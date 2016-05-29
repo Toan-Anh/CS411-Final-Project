@@ -13,7 +13,7 @@ private:
 	int nButtons;
 	int confirmed;
 
-	int wait;
+	long long wait;
 public:
 	Scene_Menu();
 	~Scene_Menu();

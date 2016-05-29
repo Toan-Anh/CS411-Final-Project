@@ -1,13 +1,14 @@
 #pragma once
 #include <stack>
 #include "Scene.h"
+#include "Global.h"
 using namespace std;
 
 class SceneManager
 {
 private:
 	static stack<Scene*> _scenes;
-	static unsigned char buffer[640 * 480 * 4];
+	static unsigned char buffer[WIDTH_WINDOW_SCREEN * HEIGHT_WINDOW_SCREEN * 4];
 
 	SceneManager();
 	~SceneManager();

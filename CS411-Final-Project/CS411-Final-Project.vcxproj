@@ -37,6 +37,7 @@
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Bomberman.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="KeyboardManager.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Scene.h" />

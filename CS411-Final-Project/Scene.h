@@ -1,6 +1,5 @@
 #pragma once
 #include "Sprite.h"
-#include "Bomberman.h"
 #include "TextureManager.h"
 #include "KeyboardManager.h"
 #include <vector>

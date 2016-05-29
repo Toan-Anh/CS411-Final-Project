@@ -1,6 +1,7 @@
 #pragma once
 #include "SceneManager.h"
 #include "Scene_Menu.h"
+#include "Bomberman.h"
 using namespace std;
 
 class Scene_Level : public Scene

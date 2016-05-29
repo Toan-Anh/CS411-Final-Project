@@ -6,9 +6,8 @@
 #include "TextureManager.h"
 #include "SceneManager.h"
 #include "KeyboardManager.h"
-#include "Sprite.h"
-#include "Scene.h"
 #include "Scene_Start.h"
+#include "Global.h"
 using namespace std;
 
 class GameManager
