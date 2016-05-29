@@ -34,5 +34,6 @@ private:
 public:
 	static void Initialize(int *argcp, char **argv, int const & win_width, int const & win_height);
 	static void GameLoop(int frame_rate);
+	static void ExitGame();
 	static void Shutdown();
 };

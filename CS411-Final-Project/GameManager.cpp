@@ -89,6 +89,11 @@ void GameManager::GameLoop(int frame_rate)
 	}
 }
 
+void GameManager::ExitGame()
+{
+	_running = false;
+}
+
 void GameManager::Shutdown()
 {
 	SceneManager::CleanUp();

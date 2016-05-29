@@ -22,6 +22,12 @@ Button Selected
 Button Locked
 ./Resource/Button/ButtonLocked.png
 1
+Back To Title
+./Resource/BackToTitle.png
+1
+Exit
+./Resource/Exit.png
+1
 Bomberman_down
 ./Resource/BombermanMove/man_down.png
 1
