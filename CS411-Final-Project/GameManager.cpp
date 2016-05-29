@@ -1,7 +1,5 @@
 #include "GameManager.h"
 #include <ctime>
-#include <iostream>
-using namespace std;
 
 GameManager* GameManager::instance = nullptr;
 bool GameManager::_running = false;

@@ -37,3 +37,9 @@ Bomberman_trydown
 Bomberman_trydown
 ./Resource/BombermanMove/man_try_down2.png
 1
+Bomb
+./Resource/Bomb.png
+1
+Explosion
+./Resource/Explosion.png
+1

@@ -1,7 +1,5 @@
 #include "Scene_Start.h"
 #include <cmath>
-#include <iostream>
-using namespace std;
 
 Scene_Start::Scene_Start()
 {
