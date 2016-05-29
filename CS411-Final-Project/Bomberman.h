@@ -3,6 +3,9 @@
 #include "KeyboardManager.h"
 
 static const int MOVE_STEP = 4;
+static const int WIDTH_WINDOW_SCREEN = 640;
+static const int HEIGHT_WINDOW_SCREEN = 480;
+
 
 class Bomberman : public Sprite
 {
