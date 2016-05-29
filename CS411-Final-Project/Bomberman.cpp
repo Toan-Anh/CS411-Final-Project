@@ -20,11 +20,11 @@ void Bomberman::Update(long long const & totalTime, long long const & elapsedTim
 		if (it->_explostion_animation_counter == elapsedTime)
 			++_numBomb;
 	}
-		
+
 
 	while (!_bombs.empty() && _bombs.front()._removable)
 		_bombs.pop_front();
-		
+
 
 	if (KeyboardManager::is_special_pressed(GLUT_KEY_DOWN))
 		move_down();
@@ -34,7 +34,7 @@ void Bomberman::Update(long long const & totalTime, long long const & elapsedTim
 		move_left();
 	else if (KeyboardManager::is_special_pressed(GLUT_KEY_RIGHT))
 		move_right();
-	
+
 	if (KeyboardManager::is_key_pressed(' '))
 		put_bomb();
 }
@@ -131,13 +131,11 @@ void Bomb::Draw()
 void Bomb::draw_center_flame(int const & animation_state)
 {
 	// explosion center
-	for (int i = 0; i < 4; ++i)
-	{
-		glTexCoord2d(0 / 7.0f, animation_state / 4.0f); glVertex2d(_rect[0].x, _rect[0].y); // top left
-		glTexCoord2d(1 / 7.0f, animation_state / 4.0f); glVertex2d(_rect[1].x, _rect[1].y); // top right
-		glTexCoord2d(1 / 7.0f, (animation_state + 1) / 4.0f); glVertex2d(_rect[2].x, _rect[2].y); // bottom right
-		glTexCoord2d(0 / 7.0f, (animation_state + 1) / 4.0f); glVertex2d(_rect[3].x, _rect[3].y); // bottom left
-	}
+	glTexCoord2d(0 / 7.0f, animation_state / 4.0f); glVertex2d(_rect[0].x, _rect[0].y); // top left
+	glTexCoord2d(1 / 7.0f, animation_state / 4.0f); glVertex2d(_rect[1].x, _rect[1].y); // top right
+	glTexCoord2d(1 / 7.0f, (animation_state + 1) / 4.0f); glVertex2d(_rect[2].x, _rect[2].y); // bottom right
+	glTexCoord2d(0 / 7.0f, (animation_state + 1) / 4.0f); glVertex2d(_rect[3].x, _rect[3].y); // bottom left
+
 }
 
 void Bomb::draw_vertical_flame(int const & animation_state)
