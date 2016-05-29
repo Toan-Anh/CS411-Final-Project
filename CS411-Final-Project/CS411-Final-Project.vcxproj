@@ -26,6 +26,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Scene_Level.cpp" />
+    <ClCompile Include="Scene_Menu.cpp" />
     <ClCompile Include="Scene_Start.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Scene_Level.h" />
+    <ClInclude Include="Scene_Menu.h" />
     <ClInclude Include="Scene_Start.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextureManager.h" />

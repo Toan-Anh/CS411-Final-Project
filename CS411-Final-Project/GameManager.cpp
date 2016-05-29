@@ -83,7 +83,7 @@ void GameManager::GameLoop(int frame_rate)
 			KeyboardManager::Reset();
 		}
 
-		// Glut main loop routine, where draw can be called
+		// Draw the scene
 		draw();
 	}
 }

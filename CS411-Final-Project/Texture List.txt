@@ -7,3 +7,18 @@ Title
 Enter
 ./Resource/Enter.png
 1
+Paused Menu
+./Resource/PausedMenu.png
+1
+Button Normal
+./Resource/Button/ButtonNormal.png
+1
+Button Highlight
+./Resource/Button/ButtonHighlight.png
+1
+Button Selected
+./Resource/Button/ButtonSelected.png
+1
+Button Locked
+./Resource/Button/ButtonLocked.png
+1
