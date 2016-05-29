@@ -27,7 +27,10 @@ void Scene_Level::Update(long long const & totalTime, long long const & elapsedT
 
 	if (KeyboardManager::is_key_pressed('\r') ||
 		KeyboardManager::is_key_pressed('\n'))
+	{
+		SceneManager::SnapShot();
 		SceneManager::AddScene(new Scene_Menu());
+	}
 }
 
 void Scene_Level::Draw()

@@ -37,6 +37,7 @@ void GameManager::Initialize(int * argcp, char ** argv, int const & win_width, i
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glViewport(0, 0, 640, 480);
 	gluOrtho2D(0, win_width, 0, win_height);
 
 	// --- Event callbacks

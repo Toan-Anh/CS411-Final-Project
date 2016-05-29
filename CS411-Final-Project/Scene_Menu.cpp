@@ -26,5 +26,6 @@ void Scene_Menu::Update(long long const & totalTime, long long const & elapsedTi
 
 void Scene_Menu::Draw()
 {
+	SceneManager::DrawSnapShot();
 	Scene::Draw();
 }

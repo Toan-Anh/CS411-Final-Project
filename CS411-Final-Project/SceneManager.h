@@ -7,6 +7,7 @@ class SceneManager
 {
 private:
 	static stack<Scene*> _scenes;
+	static unsigned char buffer[640 * 480 * 4];
 
 	SceneManager();
 	~SceneManager();
@@ -21,4 +22,9 @@ public:
 	static void ReturnScene();
 	// Free resources
 	static void CleanUp();
+
+	// Scene snapshot
+	static void SnapShot();
+	// Draw snapshot as background
+	static void DrawSnapShot();
 };

@@ -11,9 +11,6 @@ Scene_Start::Scene_Start()
 	
 	_sprites[1]->set_position({ 60, 240 });
 	_sprites[2]->set_position({ 170, 80 });
-	
-
-
 }
 
 Scene_Start::~Scene_Start()
