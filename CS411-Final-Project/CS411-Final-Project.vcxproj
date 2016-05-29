@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Bomberman.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="KeyboardManager.cpp" />

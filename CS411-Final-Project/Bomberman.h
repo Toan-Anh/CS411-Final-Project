@@ -15,7 +15,7 @@ public:
 	Bomberman(const string& name);
 	~Bomberman() {};
 
-	void Update();
+	void Update(long long const & totalTime, long long const & elapsedTime);
 	void Draw();
 
 	void move_left();

@@ -19,7 +19,7 @@ void Sprite::ApplyMatrix(Matrix const & matrix)
 	matrix.TransformPoints(_rect);
 }
 
-void Sprite::Update()
+void Sprite::Update(long long const & totalTime, long long const & elapsedTime)
 {
 }
 

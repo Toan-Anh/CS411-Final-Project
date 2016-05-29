@@ -14,7 +14,7 @@ Scene::~Scene()
 void Scene::Update(long long const & totalTime, long long const & elapsedTime)
 {
 	for (vector<Sprite*>::iterator it = _sprites.begin(); it != _sprites.end(); ++it)
-		(*it)->Update();
+		(*it)->Update(totalTime, elapsedTime);
 }
 
 void Scene::Draw()

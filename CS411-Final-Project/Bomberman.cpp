@@ -6,8 +6,9 @@ Bomberman::Bomberman(const string& name) : Sprite(name)
 	_isAlive = true;
 }
 
-void Bomberman::Update()
+void Bomberman::Update(long long const & totalTime, long long const & elapsedTime)
 {
+	Sprite::Update(totalTime, elapsedTime);
 	if (KeyboardManager::is_special_pressed(GLUT_KEY_DOWN))
 		move_down();
 	else if (KeyboardManager::is_special_pressed(GLUT_KEY_UP))
