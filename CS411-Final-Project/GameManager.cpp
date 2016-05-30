@@ -20,7 +20,7 @@ void GameManager::Initialize(int * argcp, char ** argv, int const & win_width, i
 	// New Instance
 	instance = new GameManager();
 
-	// --- Initialize OpenGl and GLUT
+	// --- Initialize OpenGL and GLUT
 	glutInit(argcp, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 

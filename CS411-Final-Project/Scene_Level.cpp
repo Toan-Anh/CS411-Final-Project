@@ -2,7 +2,7 @@
 
 Scene_Level::Scene_Level(int const & level) : _map(level, { 160, 0 })
 {
-	_sprites.push_back(new Bomberman("Bomberman_down"));
+	_sprites.push_back(new Bomberman(_map));	
 	if (_map.is_loaded())
 		_sprites[0]->set_position(_map.bomberman_starting_pos());
 }

@@ -48,6 +48,30 @@ Vector2 GameMap::bomberman_starting_pos()
 	return _bomberman;
 }
 
+void GameMap::Change_Square(int const & row, int const & column, char const & value)
+{
+	_grid[row][column] = value;
+}
+
+char GameMap::Get_Square(int const & row, int const & column)
+{
+	return _grid[row][column];
+}
+
+void GameMap::Change_Square(Vector2 const & pos, char const & value)
+{
+	int row = _height - (int)(pos.y - _starting_pos.y) / 32 - 1;
+	int column = (int)(pos.x - _starting_pos.x) / 32;
+	_grid[row][column] = value;
+}
+
+char GameMap::Get_Square(Vector2 const & pos)
+{
+	int row = _height - (int)(pos.y - _starting_pos.y) / 32 - 1;
+	int column = (int)(pos.x - _starting_pos.x) / 32;
+	return _grid[row][column];
+}
+
 void GameMap::Update(long long const & totalTime, long long const & elapsedTime)
 {
 
@@ -75,8 +99,8 @@ void GameMap::Draw()
 				break;
 			}
 
-			double x = r * 32;
-			double y = c * 32;
+			double x = c * 32;
+			double y = (_height - r - 1) * 32;
 
 			glBegin(GL_QUADS);
 			glTexCoord2d(0.0f, 0.0f); glVertex2d(_starting_pos.x + x, _starting_pos.y + y); // top left
@@ -86,4 +110,11 @@ void GameMap::Draw()
 			glEnd();
 		}
 	}
+}
+
+bool GameMap::can_move(Vector2 const & pos)
+{
+	int r = _height - (int)(pos.y - _starting_pos.y) / 32 - 1;
+	int c = (int)(pos.x - _starting_pos.x) / 32;
+	return _grid[r][c] == '0';
 }

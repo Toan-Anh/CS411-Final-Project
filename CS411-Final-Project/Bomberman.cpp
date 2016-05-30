@@ -4,7 +4,7 @@
  * Bomberman
  * =================================================================== */
 
-Bomberman::Bomberman(const string& name) : Sprite(name)
+Bomberman::Bomberman(GameMap & game_map) : Sprite("Bomberman_down"), _map(game_map)
 {
 	_numBomb = 2;
 	_isAlive = true;
@@ -17,7 +17,7 @@ void Bomberman::Update(long long const & totalTime, long long const & elapsedTim
 	{
 		it->Update(totalTime, elapsedTime);
 		// reset number if the bomb has just exploded
-		if (it->_explostion_animation_counter == elapsedTime)
+		if (it->_explosion_animation_counter == elapsedTime)
 			++_numBomb;
 	}
 
@@ -48,20 +48,30 @@ void Bomberman::Draw()
 
 void Bomberman::move_left()
 {
-	_rect[0].x -= MOVE_STEP;
-	set_position(_rect[0]);
+	Vector2 pos = { _rect[0].x - MOVE_STEP, _rect[0].y };
+	if (_map.can_move(pos))
+		set_position(pos);
 }
 
 void Bomberman::move_right()
 {
-	_rect[0].x += MOVE_STEP;
-	set_position(_rect[0]);
+	Vector2 pos = { _rect[0].x + MOVE_STEP, _rect[0].y };
+	if (_map.can_move(pos))
+		set_position(pos);
 }
 
 void Bomberman::move_down()
 {
-	_rect[0].y -= MOVE_STEP;
-	set_position(_rect[0]);
+	Vector2 pos = { _rect[0].x, _rect[0].y - MOVE_STEP };
+	if (_map.can_move(pos))
+		set_position(pos);
+}
+
+void Bomberman::move_up()
+{
+	Vector2 pos = { _rect[0].x, _rect[0].y + MOVE_STEP };
+	if (_map.can_move(pos))
+		set_position(pos);
 }
 
 void Bomberman::put_bomb()
@@ -69,14 +79,8 @@ void Bomberman::put_bomb()
 	if (_numBomb > 0)
 	{
 		--_numBomb;
-		_bombs.push_back(Bomb(_rect[0]));
+		_bombs.push_back(Bomb(_rect[0], _map));
 	}
-}
-
-void Bomberman::move_up()
-{
-	_rect[0].y += MOVE_STEP;
-	set_position(_rect[0]);
 }
 
 
@@ -84,13 +88,14 @@ void Bomberman::move_up()
  * Bomb
  * =================================================================== */
 
-Bomb::Bomb(Vector2 const & position) : Sprite("Bomb")
+Bomb::Bomb(Vector2 const & position, GameMap & game_map) : Sprite("Bomb"), _map(game_map)
 {
 	_count_down = 3000;
-	_power = 4;
+	_power = 2;
 	_removable = false;
-	_explostion_animation_counter = 0;
+	_explosion_animation_counter = 0;
 	set_position(position);
+	_map.Change_Square(position, '3');
 }
 
 Bomb::~Bomb()
@@ -105,10 +110,22 @@ void Bomb::Update(long long const & totalTime, long long const & elapsedTime)
 		_count_down -= elapsedTime;
 	else
 	{
-		_explostion_animation_counter += elapsedTime;
-		if (_explostion_animation_counter > 350)
+		if (_explosion_animation_counter == 0)
+		{
+			_map.Change_Square(_rect[0], '0');
+			// calculate explosion area
+
+		}
+			
+		_explosion_animation_counter += elapsedTime;
+		if (_explosion_animation_counter > 350)
 			_removable = true;
 	}
+}
+
+void Bomb::detonate()
+{
+	_count_down = 0;
 }
 
 void Bomb::Draw()
@@ -118,7 +135,7 @@ void Bomb::Draw()
 	else
 	{
 		TextureManager::BindTexture("Explosion");
-		int animation_state = _explostion_animation_counter / 100;
+		int animation_state = _explosion_animation_counter / 100;
 
 		glBegin(GL_QUADS);
 		draw_center_flame(animation_state);
