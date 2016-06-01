@@ -2,6 +2,7 @@
 #include "Sprite.h"
 #include "KeyboardManager.h"
 #include "GameMap.h"
+#include "Global.h"
 
 static const int MOVE_STEP = 32;
 
@@ -15,7 +16,7 @@ class Bomberman : public Sprite
 {
 	int _numBomb;
 	bool _isAlive;
-	list<Bomb> _bombs;
+	list<Bomb*> _bombs;
 	GameMap& _map;
 
 	void move_left();

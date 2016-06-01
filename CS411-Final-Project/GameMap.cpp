@@ -1,8 +1,6 @@
 #include "GameMap.h"
 #include <sstream>
 #include <fstream>
-#include <iostream>
-using namespace std;
 
 GameMap::GameMap(int const & level, Vector2 const & start)
 {
@@ -116,5 +114,12 @@ bool GameMap::can_move(Vector2 const & pos)
 {
 	int r = _height - (int)(pos.y - _starting_pos.y) / 32 - 1;
 	int c = (int)(pos.x - _starting_pos.x) / 32;
-	return _grid[r][c] == '0';
+	return _grid[r][c] == '0' || _grid[r][c] == '4';
+}
+
+bool GameMap::InBound(Vector2 const & pos)
+{
+	int r = _height - (int)(pos.y - _starting_pos.y) / 32 - 1;
+	int c = (int)(pos.x - _starting_pos.x) / 32;
+	return (r >= 0 && r < _height && c >= 0 && c < _width);
 }

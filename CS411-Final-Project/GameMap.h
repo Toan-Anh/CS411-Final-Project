@@ -25,4 +25,5 @@ public:
 	char Get_Square(Vector2 const & pos);
 	void Update(long long const & totalTime, long long const & elapsedTime);
 	void Draw();
+	bool InBound(Vector2 const & pos);
 };
