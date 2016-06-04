@@ -8,4 +8,9 @@ struct Vector2
 	{
 		return { x + obj.x, y + obj.y };
 	}
+
+	Vector2 operator-(Vector2 const & obj)
+	{
+		return{ x - obj.x, y - obj.y };
+	}
 };

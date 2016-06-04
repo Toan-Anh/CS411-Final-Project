@@ -30,6 +30,15 @@ Scene_Level::Scene_Level(int const & level) : _map(level, { 160, 0 })
 	}
 
 	_monster_killed = 0;
+
+	Vector2 startPos = { 0 , 5 };
+	for (int i = 0; i < 5; ++i) {
+		_sprites.push_back(new Sprite("Num_0"));
+
+		Vector2 pos = { i*WIDTH_SCORE_NUM, 0 };
+		_sprites[i + 1]->set_position(startPos + pos);
+	}
+
 }
 
 Scene_Level::~Scene_Level()
@@ -40,6 +49,27 @@ Scene_Level::~Scene_Level()
 			delete _monsters[i];
 		_monsters.pop_back();
 	}
+}
+
+void Scene_Level::UpdateScore()
+{
+	// The number of digits of Score must be less than six;
+	int score = Score, n, num, i = 4;
+	
+	while (score != 0)
+	{
+		num = score % 10;
+		Vector2 prePos =_sprites[i + 1]->get_position();
+		delete _sprites[i + 1];
+		_sprites[i + 1] = new Sprite("Num_" + to_string(num));
+		_sprites[i + 1]->set_position(prePos);
+		score /= 10;
+		--i;
+	}
+
+	++Score;
+	if (Score > 99999)
+		Score = 0;
 }
 
 void Scene_Level::Update(long long const & totalTime, long long const & elapsedTime)
@@ -72,7 +102,11 @@ void Scene_Level::Update(long long const & totalTime, long long const & elapsedT
 		SceneManager::SnapShot();
 		SceneManager::AddScene(new Scene_Menu());
 	}
+
+	UpdateScore();
+
 }
+
 
 void Scene_Level::Draw()
 {

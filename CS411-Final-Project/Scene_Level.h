@@ -16,7 +16,7 @@ private:
 public:
 	Scene_Level(int const & level);
 	~Scene_Level();
-
+	void UpdateScore();
 	void Update(long long const & totalTime, long long const & elapsedTime);
 	void Draw();
 };
