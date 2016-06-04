@@ -9,7 +9,7 @@ class Monster : public Sprite
 {
 protected:
 	int _health;
-	bool _isAlive;
+	long long _dead_anim_timer;
 	GameMap& _map;
 
 	void move_left();

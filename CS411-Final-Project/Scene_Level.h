@@ -12,6 +12,7 @@ class Scene_Level : public Scene
 private:
 	GameMap _map;
 	vector<Monster*> _monsters;
+	int _monster_killed;
 public:
 	Scene_Level(int const & level);
 	~Scene_Level();

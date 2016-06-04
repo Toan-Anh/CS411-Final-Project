@@ -2,7 +2,6 @@
 
 Monster::Monster(string const & tex_name, GameMap & game_map) : Sprite(tex_name), _map(game_map)
 {
-	_isAlive = true;
 }
 
 void Monster::Update(long long const & totalTime, long long const & elapsedTime)
@@ -33,5 +32,5 @@ void Monster::move_up()
 
 bool Monster::IsAlive()
 {
-	return _isAlive;
+	return _dead_anim_timer > 0;
 }

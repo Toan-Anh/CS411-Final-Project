@@ -4,6 +4,9 @@ using namespace std;
 
 SimpleMonster::SimpleMonster(string const & tex_name, GameMap & game_map, Vector2 const & start, vector<pair<int, int>> const & command) : Monster(tex_name, game_map), _current_pos_index(0)
 {
+	_health = 1;
+	_dead_anim_timer = 300;
+
 	_current_pos_index = 0;
 	_turn_around = false;
 	_move_timer = 0;
@@ -45,17 +48,31 @@ void SimpleMonster::Update(long long const & totalTime, long long const & elapse
 {
 	Monster::Update(totalTime, elapsedTime);
 
-	if (_move_timer > 300)
-	{
-		if (!_turn_around)
-			move_forward();
-		else
-			move_backward();
+	if (_map.Get_Square(_rect[0]) == '4')
+		--_health;
 
-		_move_timer = 0;
+	if (_health > 0)
+	{
+		if (_move_timer > 300)
+		{
+			if (!_turn_around)
+				move_forward();
+			if (_turn_around)
+				move_backward();
+
+			_move_timer = 0;
+		}
+		else
+			_move_timer += elapsedTime;
 	}
 	else
-		_move_timer += elapsedTime;
+	{
+		if (_dead_anim_timer <= 0)
+		{
+		}
+		else
+			_dead_anim_timer -= elapsedTime;
+	}
 }
 
 void SimpleMonster::Draw()

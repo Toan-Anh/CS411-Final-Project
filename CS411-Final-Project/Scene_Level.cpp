@@ -28,13 +28,16 @@ Scene_Level::Scene_Level(int const & level) : _map(level, { 160, 0 })
 			_monsters.push_back(new SimpleMonster("Monster 0", _map, monster_pos, paths));
 		}
 	}
+
+	_monster_killed = 0;
 }
 
 Scene_Level::~Scene_Level()
 {
 	for (int i = _monsters.size() - 1; i >= 0; --i)
 	{
-		delete _monsters[i];
+		if (_monsters[i] != nullptr)
+			delete _monsters[i];
 		_monsters.pop_back();
 	}
 }
@@ -44,8 +47,21 @@ void Scene_Level::Update(long long const & totalTime, long long const & elapsedT
 	Scene::Update(totalTime, elapsedTime);
 
 	for (unsigned i = 0; i < _monsters.size(); ++i)
+	{
 		if (_monsters[i] != nullptr)
+		{
 			_monsters[i]->Update(totalTime, elapsedTime);
+			if (!_monsters[i]->IsAlive())
+			{
+				delete _monsters[i];
+				_monsters[i] = nullptr;
+				++_monster_killed;
+			}
+		}
+	}
+
+	if (_monster_killed == _monsters.size())
+		SceneManager::ReturnScene();
 
 	if (!((Bomberman*)_sprites[0])->IsAlive())
 		SceneManager::ChangeScene(new Scene_GameOver());
