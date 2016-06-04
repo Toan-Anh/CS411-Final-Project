@@ -29,6 +29,12 @@ GameMap::GameMap(int const & level, Vector2 const & start)
 	_starting_pos = start;
 
 	_loaded = true;
+
+	int tmp;
+	while (fin >> tmp)
+		_monster_info.push_back(tmp);
+
+	fin.close();
 }
 
 GameMap::~GameMap()
@@ -114,7 +120,7 @@ bool GameMap::can_move(Vector2 const & pos)
 {
 	int r = _height - (int)(pos.y - _starting_pos.y) / 32 - 1;
 	int c = (int)(pos.x - _starting_pos.x) / 32;
-	return _grid[r][c] == '0' || _grid[r][c] == '4';
+	return _grid[r][c] == '0' || _grid[r][c] == '4' || _grid[r][c] == '5';
 }
 
 bool GameMap::InBound(Vector2 const & pos)
@@ -122,4 +128,14 @@ bool GameMap::InBound(Vector2 const & pos)
 	int r = _height - (int)(pos.y - _starting_pos.y) / 32 - 1;
 	int c = (int)(pos.x - _starting_pos.x) / 32;
 	return (r >= 0 && r < _height && c >= 0 && c < _width);
+}
+
+vector<int> GameMap::get_monster_info()
+{
+	return _monster_info;
+}
+
+Vector2 GameMap::Get_Position_From_Grid(int const & r, int const & c)
+{
+	return {_starting_pos.x + c * 32, _starting_pos.y + (_height - r - 1) * 32};
 }

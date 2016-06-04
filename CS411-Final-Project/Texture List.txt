@@ -52,3 +52,33 @@ Wood
 Wall
 ./Resource/Tile/brick.png
 0
+Game Over
+./Resource/GameOver.png
+1
+Yes Normal
+./Resource/Button/YesNormal.png
+1
+Yes Highlight
+./Resource/Button/YesHighlight.png
+1
+Yes Selected
+./Resource/Button/YesSelected.png
+1
+Yes Locked
+./Resource/Button/YesLocked.png
+1
+No Normal
+./Resource/Button/NoNormal.png
+1
+No Highlight
+./Resource/Button/NoHighlight.png
+1
+No Selected
+./Resource/Button/NoSelected.png
+1
+No Locked
+./Resource/Button/NoLocked.png
+1
+Monster 0
+./Resource/Monster/Monster0.png
+1

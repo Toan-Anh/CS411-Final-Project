@@ -54,6 +54,15 @@
     <ClCompile Include="GameMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scene_GameOver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleMonster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -96,6 +105,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_GameOver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleMonster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

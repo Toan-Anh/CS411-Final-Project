@@ -1,21 +1,19 @@
 #pragma once
 #include "GameManager.h"
 #include "SceneManager.h"
-#include "Scene_Level.h"
 
-class Scene_Menu : public Scene
+class Scene_GameOver : public Scene
 {
 private:
-	vector<Sprite> button_state;
-	vector<Sprite> options;
+	vector<Sprite> yes;
+	vector<Sprite> no;
 	int selected;
-	int nButtons;
 	int confirmed;
 
 	long long wait;
 public:
-	Scene_Menu();
-	~Scene_Menu();
+	Scene_GameOver();
+	~Scene_GameOver();
 
 	void Update(long long const & totalTime, long long const & elapsedTime);
 	void Draw();
