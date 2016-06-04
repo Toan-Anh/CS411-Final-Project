@@ -52,6 +52,37 @@ Wood
 Wall
 ./Resource/Tile/brick.png
 0
+<<<<<<< HEAD
+Num_0
+./Resource/Score/num0.png
+1
+Num_1
+./Resource/Score/num1.png
+1
+Num_2
+./Resource/Score/num2.png
+1
+Num_3
+./Resource/Score/num3.png
+1
+Num_4
+./Resource/Score/num4.png
+1
+Num_5
+./Resource/Score/num5.png
+1
+Num_6
+./Resource/Score/num6.png
+1
+Num_7
+./Resource/Score/num7.png
+1
+Num_8
+./Resource/Score/num8.png
+1
+Num_9
+./Resource/Score/num9.png
+=======
 Game Over
 ./Resource/GameOver.png
 1
@@ -81,4 +112,5 @@ No Locked
 1
 Monster 0
 ./Resource/Monster/Monster0.png
+>>>>>>> origin/master
 1

@@ -12,6 +12,7 @@ private:
 
 	Vector2 _starting_pos;
 	Vector2 _bomberman;
+	vector<int> _monster_info;
 public:
 	GameMap(int const & level, Vector2 const & start);
 	~GameMap();
@@ -26,4 +27,6 @@ public:
 	void Update(long long const & totalTime, long long const & elapsedTime);
 	void Draw();
 	bool InBound(Vector2 const & pos);
+	Vector2 Get_Position_From_Grid(int const & r, int const & c);
+	vector<int> get_monster_info();
 };

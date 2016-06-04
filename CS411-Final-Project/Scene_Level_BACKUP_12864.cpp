@@ -6,6 +6,10 @@ Scene_Level::Scene_Level(int const & level) : _map(level, { 160, 0 })
 	if (_map.is_loaded())
 		_sprites[0]->set_position(_map.bomberman_starting_pos());
 
+<<<<<<< HEAD
+	for (int i = 0; i < 9; ++i)
+		_sprites.push_back(new Sprite("Num_" + to_string(i)));
+=======
 	vector<int> info = _map.get_monster_info();
 	int nMonsters = info[0];
 	for (int i = 0, k = 1; i < nMonsters; ++i)
@@ -30,6 +34,7 @@ Scene_Level::Scene_Level(int const & level) : _map(level, { 160, 0 })
 	}
 
 	_monster_killed = 0;
+>>>>>>> origin/master
 }
 
 Scene_Level::~Scene_Level()
@@ -73,6 +78,8 @@ void Scene_Level::Update(long long const & totalTime, long long const & elapsedT
 		SceneManager::AddScene(new Scene_Menu());
 	}
 }
+
+
 
 void Scene_Level::Draw()
 {

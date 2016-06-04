@@ -25,11 +25,14 @@
     <ClCompile Include="KeyboardManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Scene_GameOver.cpp" />
     <ClCompile Include="Scene_Level.cpp" />
     <ClCompile Include="Scene_Menu.cpp" />
     <ClCompile Include="Scene_Start.cpp" />
+    <ClCompile Include="SimpleMonster.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
@@ -40,11 +43,14 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="KeyboardManager.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Scene_GameOver.h" />
     <ClInclude Include="Scene_Level.h" />
     <ClInclude Include="Scene_Menu.h" />
     <ClInclude Include="Scene_Start.h" />
+    <ClInclude Include="SimpleMonster.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vector2.h" />

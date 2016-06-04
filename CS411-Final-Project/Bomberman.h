@@ -1,6 +1,8 @@
 #pragma once
 #include "Sprite.h"
 #include "KeyboardManager.h"
+#include "SceneManager.h"
+#include "Scene_GameOver.h"
 #include "GameMap.h"
 #include "Global.h"
 
@@ -32,6 +34,7 @@ public:
 
 	void Update(long long const & totalTime, long long const & elapsedTime);
 	void Draw();
+	bool IsAlive();
 };
 
 /* ======================================================================

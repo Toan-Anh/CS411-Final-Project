@@ -6,7 +6,7 @@
 
 Bomberman::Bomberman(GameMap & game_map) : Sprite("Bomberman_down"), _map(game_map)
 {
-	_numBomb = 2;
+	_numBomb = 1;
 	_isAlive = true;
 }
 
@@ -39,7 +39,8 @@ void Bomberman::Update(long long const & totalTime, long long const & elapsedTim
 		else if (KeyboardManager::is_special_pressed(GLUT_KEY_RIGHT))
 			move_right();
 
-		if (_map.Get_Square(_rect[0]) == '4')
+		if (_map.Get_Square(_rect[0]) == '4' || 
+			_map.Get_Square(_rect[0]) == '5')
 			_isAlive = false;
 
 		if (KeyboardManager::is_key_pressed(' '))
@@ -91,6 +92,11 @@ void Bomberman::put_bomb()
 	}
 }
 
+bool Bomberman::IsAlive()
+{
+	return _isAlive;
+}
+
 
 /* ======================================================================
  * Bomb
@@ -99,7 +105,7 @@ void Bomberman::put_bomb()
 Bomb::Bomb(Vector2 const & position, GameMap & game_map) : Sprite("Bomb"), _map(game_map)
 {
 	_count_down = 3000;
-	_power = 5;
+	_power = 2;
 	_removable = false;
 	_explosion_animation_counter = 0;
 	set_position(position);
@@ -157,7 +163,7 @@ void Bomb::Update(long long const & totalTime, long long const & elapsedTime)
 							break;
 						}
 
-						if (tmp != '0' && tmp != '3')
+						if (tmp != '0' && tmp != '3' && tmp != '5')
 							break;
 						else if (tmp == '3')
 						{
