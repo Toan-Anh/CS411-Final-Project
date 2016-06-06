@@ -3,7 +3,6 @@
 #include "KeyboardManager.h"
 #include "SceneManager.h"
 #include "GameMap.h"
-#include "Global.h"
 
 class Monster : public Sprite
 {

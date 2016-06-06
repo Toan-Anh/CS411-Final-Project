@@ -26,7 +26,10 @@ void SceneManager::AddScene(Scene * scene)
 void SceneManager::ReturnScene()
 {
 	if (!_scenes.empty())
+	{
+		delete _scenes.top();
 		_scenes.pop();
+	}
 }
 
 void SceneManager::ChangeScene(Scene * scene)

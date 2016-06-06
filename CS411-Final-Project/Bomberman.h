@@ -4,7 +4,6 @@
 #include "SceneManager.h"
 #include "Scene_GameOver.h"
 #include "GameMap.h"
-#include "Global.h"
 
 static const int MOVE_STEP = 32;
 

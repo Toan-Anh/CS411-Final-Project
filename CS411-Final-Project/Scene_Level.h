@@ -1,6 +1,7 @@
 #pragma once
 #include "SceneManager.h"
 #include "Scene_Menu.h"
+#include "Scene_Congratulations.h"
 #include "Bomberman.h"
 #include "GameMap.h"
 #include "Monster.h"
@@ -13,6 +14,8 @@ private:
 	GameMap _map;
 	vector<Monster*> _monsters;
 	int _monster_killed;
+	int _level;
+	long long _dead_anim_timer;
 public:
 	Scene_Level(int const & level);
 	~Scene_Level();

@@ -112,3 +112,6 @@ Num_8
 Num_9
 ./Resource/Score/num9.png
 1
+Congratulations
+./Resource/Congratulations.png
+0

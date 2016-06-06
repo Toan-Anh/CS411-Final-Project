@@ -105,7 +105,7 @@ bool Bomberman::IsAlive()
 Bomb::Bomb(Vector2 const & position, GameMap & game_map) : Sprite("Bomb"), _map(game_map)
 {
 	_count_down = 3000;
-	_power = 2;
+	_power = 3;
 	_removable = false;
 	_explosion_animation_counter = 0;
 	set_position(position);
@@ -160,6 +160,7 @@ void Bomb::Update(long long const & totalTime, long long const & elapsedTime)
 						if (tmp == '1')
 						{
 							_map.Change_Square(pos, '4');
+							Score += 10;
 							break;
 						}
 

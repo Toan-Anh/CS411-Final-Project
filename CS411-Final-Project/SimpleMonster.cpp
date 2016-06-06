@@ -5,7 +5,7 @@ using namespace std;
 SimpleMonster::SimpleMonster(string const & tex_name, GameMap & game_map, Vector2 const & start, vector<pair<int, int>> const & command) : Monster(tex_name, game_map), _current_pos_index(0)
 {
 	_health = 1;
-	_dead_anim_timer = 300;
+	_dead_anim_timer = 500;
 
 	_current_pos_index = 0;
 	_turn_around = false;
@@ -88,9 +88,14 @@ void SimpleMonster::move_forward()
 		if (_map.can_move(tmp))
 		{
 			if (_map.Get_Square(_rect[0]) != '4')
+			{
 				_map.Change_Square(_rect[0], '0');
+				_map.Change_Square(tmp, '5');
+			}
+			else
+				--_health;
+
 			set_position(tmp);
-			_map.Change_Square(tmp, '5');
 			++_current_pos_index;
 		}
 		else
@@ -108,9 +113,14 @@ void SimpleMonster::move_backward()
 		if (_map.can_move(tmp))
 		{
 			if (_map.Get_Square(_rect[0]) != '4')
+			{
 				_map.Change_Square(_rect[0], '0');
+				_map.Change_Square(tmp, '5');
+			}
+			else
+				--_health;
+
 			set_position(tmp);
-			_map.Change_Square(tmp, '5');
 			--_current_pos_index;
 		}
 		else

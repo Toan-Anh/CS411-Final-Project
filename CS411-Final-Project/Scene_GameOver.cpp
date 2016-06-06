@@ -4,6 +4,7 @@ using namespace std;
 
 Scene_GameOver::Scene_GameOver()
 {
+	Score = 0;
 	_sprites.push_back(new Sprite("Game Over"));
 	_sprites[0]->set_position({ 0, 20 });
 

@@ -1,6 +1,8 @@
 #include "Scene_Level.h"
 
-Scene_Level::Scene_Level(int const & level) : _map(level, { 160, 0 })
+int Score = 0;
+
+Scene_Level::Scene_Level(int const & level) : _level(level), _map(level, { 160, 0 })
 {
 	_sprites.push_back(new Bomberman(_map));	
 	if (_map.is_loaded())
@@ -39,6 +41,7 @@ Scene_Level::Scene_Level(int const & level) : _map(level, { 160, 0 })
 		_sprites[i + 1]->set_position(startPos + pos);
 	}
 
+	_dead_anim_timer = 500;
 }
 
 Scene_Level::~Scene_Level()
@@ -67,7 +70,7 @@ void Scene_Level::UpdateScore()
 		--i;
 	}
 
-	++Score;
+	//++Score;
 	if (Score > 99999)
 		Score = 0;
 }
@@ -86,15 +89,30 @@ void Scene_Level::Update(long long const & totalTime, long long const & elapsedT
 				delete _monsters[i];
 				_monsters[i] = nullptr;
 				++_monster_killed;
+				Score += 50;
 			}
 		}
 	}
 
+	UpdateScore();
+
 	if (_monster_killed == _monsters.size())
-		SceneManager::ReturnScene();
+	{
+		if (_level < N_LEVELS)
+			SceneManager::ChangeScene(new Scene_Level(_level + 1));
+		else
+			SceneManager::ChangeScene(new Scene_Congratulations());
+		return;
+	}
 
 	if (!((Bomberman*)_sprites[0])->IsAlive())
-		SceneManager::ChangeScene(new Scene_GameOver());
+	{
+		if (_dead_anim_timer <= 0)
+			SceneManager::ChangeScene(new Scene_GameOver());
+		else
+			_dead_anim_timer -= elapsedTime;
+		return;
+	}
 
 	if (KeyboardManager::is_key_pressed('\r') ||
 		KeyboardManager::is_key_pressed('\n'))
@@ -102,9 +120,6 @@ void Scene_Level::Update(long long const & totalTime, long long const & elapsedT
 		SceneManager::SnapShot();
 		SceneManager::AddScene(new Scene_Menu());
 	}
-
-	UpdateScore();
-
 }
 
 

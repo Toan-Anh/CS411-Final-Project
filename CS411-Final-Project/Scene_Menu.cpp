@@ -38,6 +38,11 @@ void Scene_Menu::Update(long long const & totalTime, long long const & elapsedTi
 		{
 			switch (confirmed)
 			{
+			case 0:
+				Score = 0;
+				SceneManager::ReturnScene();
+				SceneManager::ReturnScene();
+				break;
 			case 1: // Exit
 				GameManager::ExitGame();
 				break;
