@@ -31,6 +31,7 @@
     <ClCompile Include="Scene_Congratulations.cpp" />
     <ClCompile Include="Scene_GameOver.cpp" />
     <ClCompile Include="Scene_Level.cpp" />
+    <ClCompile Include="Scene_LevelSelection.cpp" />
     <ClCompile Include="Scene_Menu.cpp" />
     <ClCompile Include="Scene_Start.cpp" />
     <ClCompile Include="SimpleMonster.cpp" />
@@ -50,6 +51,7 @@
     <ClInclude Include="Scene_Congratulations.h" />
     <ClInclude Include="Scene_GameOver.h" />
     <ClInclude Include="Scene_Level.h" />
+    <ClInclude Include="Scene_LevelSelection.h" />
     <ClInclude Include="Scene_Menu.h" />
     <ClInclude Include="Scene_Start.h" />
     <ClInclude Include="SimpleMonster.h" />

@@ -21,7 +21,7 @@ Scene_GameOver::Scene_GameOver()
 	for (int i = 0; i < 4; ++i)
 	{
 		yes[i].set_position({150, 150});
-		no[i].set_position({438, 150});
+		no[i].set_position({418, 150});
 	}
 
 	selected = 0;

@@ -18,13 +18,13 @@ Scene_Start::~Scene_Start()
 void Scene_Start::Update(long long const & totalTime, long long const & elapsedTime)
 {
 	Scene::Update(totalTime, elapsedTime);
-
-	if (KeyboardManager::is_key_pressed('\r') ||
-		KeyboardManager::is_key_pressed('\n'))
-		SceneManager::AddScene(new Scene_Level(1));
 	
 	Vector2 tmp = _sprites[2]->get_position();
 	_sprites[2]->set_position({tmp.x, 80 + 5 * cos(0.009 * totalTime)});
+
+	if (KeyboardManager::is_key_pressed('\r') ||
+		KeyboardManager::is_key_pressed('\n'))
+		SceneManager::ChangeScene(new Scene_LevelSelection());
 }
 
 void Scene_Start::Draw()

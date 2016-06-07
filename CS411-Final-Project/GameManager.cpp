@@ -61,6 +61,7 @@ void GameManager::GameLoop(int frame_rate)
 
 	while (_running)
 	{	
+		bool updated = false;
 		// update timer
 		time_t new_time = clock();
 		long long frame_time = new_time - current_time;
@@ -70,6 +71,7 @@ void GameManager::GameLoop(int frame_rate)
 
 		while (accumulator >= time_per_frame)
 		{
+			updated = true;
 			// Glut main loop routine, where event can be caught
 			glutMainLoopEvent();
 			// Update the scene;
@@ -82,7 +84,8 @@ void GameManager::GameLoop(int frame_rate)
 		}
 
 		// Draw the scene
-		draw();
+		if (updated)
+			draw();
 	}
 }
 

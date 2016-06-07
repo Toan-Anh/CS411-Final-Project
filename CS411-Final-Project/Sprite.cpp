@@ -47,3 +47,8 @@ Vector2 Sprite::get_position()
 {
 	return _rect[0];
 }
+
+vector<Vector2> Sprite::get_rect()
+{
+	return _rect;
+}

@@ -19,6 +19,7 @@ public:
 
 	virtual void set_position(Vector2 top_left);
 	virtual Vector2 get_position();
+	virtual vector<Vector2> get_rect();
 	virtual void ApplyMatrix(Matrix const & matrix);
 	virtual void Update(long long const & totalTime, long long const &elapsedTime);
 	virtual void Draw();

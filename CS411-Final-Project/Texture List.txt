@@ -115,3 +115,21 @@ Num_9
 Congratulations
 ./Resource/Congratulations.png
 0
+Level Selection
+./Resource/LevelSelection.png
+1
+Button Normal Small
+./Resource/Button/ButtonNormalSmall.png
+1
+Button Highlight Small
+./Resource/Button/ButtonHighlightSmall.png
+1
+Button Selected Small
+./Resource/Button/ButtonSelectedSmall.png
+1
+Button Locked Small
+./Resource/Button/ButtonLockedSmall.png
+1
+Button Locked Lock Small
+./Resource/Button/ButtonLockedLockSmall.png
+1
