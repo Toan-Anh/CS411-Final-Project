@@ -15,7 +15,10 @@ void Scene_Congratulations::Update(long long const & totalTime, long long const 
 
 	if (KeyboardManager::is_key_pressed('\r') ||
 		KeyboardManager::is_key_pressed('\n'))
+	{
 		SceneManager::ReturnScene();
+		SceneManager::ChangeScene(new Scene_Start());
+	}
 }
 
 void Scene_Congratulations::Draw()

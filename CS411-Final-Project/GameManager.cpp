@@ -1,5 +1,7 @@
 #include "GameManager.h"
 #include <ctime>
+#include <fstream>
+using namespace std;
 
 GameManager* GameManager::instance = nullptr;
 bool GameManager::_running = false;
@@ -97,6 +99,13 @@ void GameManager::ExitGame()
 void GameManager::Shutdown()
 {
 	SceneManager::CleanUp();
+	ofstream fout;
+	fout.open("GameData");
+	if (!fout.is_open())
+		return;
+	for (unordered_map<int, int>::const_iterator it = BestScores.cbegin(); it != BestScores.cend(); ++it)
+		fout << it->first << " " << it->second << endl;
+	fout.close();
 }
 
 void GameManager::update(long long const & totalTime, long long const & elapsedTime)

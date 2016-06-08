@@ -1,9 +1,10 @@
 #include "Scene_Level.h"
 
-int Score = 0;
+int Score;
 
 Scene_Level::Scene_Level(int const & level) : _level(level), _map(level, { 160, 0 })
 {
+	Score = 0;
 	_sprites.push_back(new Bomberman(_map));	
 	if (_map.is_loaded())
 		_sprites[0]->set_position(_map.bomberman_starting_pos());
@@ -100,7 +101,10 @@ void Scene_Level::Update(long long const & totalTime, long long const & elapsedT
 	{
 		if (_level < N_LEVELS)
 		{
+			if (Score > BestScores[_level])
+				BestScores[_level] = Score;
 			UnlockedLevels.insert(_level + 1);
+			BestScores[_level + 1] = 0;
 			//SceneManager::ChangeScene(new Scene_Level(_level + 1));
 			SceneManager::ReturnScene();
 		}

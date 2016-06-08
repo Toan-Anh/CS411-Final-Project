@@ -1,6 +1,9 @@
 #include "Scene_LevelSelection.h"
+#include <fstream>
+using namespace std;
 
 unordered_set<int> UnlockedLevels;
+unordered_map<int, int> BestScores;
 
 Scene_LevelSelection::Scene_LevelSelection()
 {
@@ -22,6 +25,21 @@ Scene_LevelSelection::Scene_LevelSelection()
 		option_positions.push_back({ (double)78 + (i % 5) * 92 + 20, (double)294 - (i / 5) * 87 });
 
 	UnlockedLevels.insert(1);
+	BestScores[1] = 0;
+
+	ifstream fin;
+	fin.open("GameData");
+	if (fin.is_open())
+	{
+		int level, best;
+		while (fin >> level >> best)
+		{
+			UnlockedLevels.insert(level);
+			BestScores[level] = best;
+		}
+		fin.close();
+	}
+
 	current_option = 0;
 	chosen_option = -1;
 	transition_wait_time = 150;
@@ -128,6 +146,21 @@ void Scene_LevelSelection::Update(long long const & totalTime, long long const &
 	}
 }
 
+void Scene_LevelSelection::DrawBestScore(unsigned const & score)
+{
+	int tmp = score, digit, i = 4;
+	Vector2 base_pos = { 320, 32 };
+
+	while (i >= 0)
+	{
+		digit = tmp % 10;
+		numbers[digit].set_position({ base_pos.x + WIDTH_SCORE_NUM * i, base_pos.y });
+		numbers[digit].Draw();
+		tmp /= 10;
+		--i;
+	}
+}
+
 void Scene_LevelSelection::Draw()
 {
 	Scene::Draw();
@@ -158,4 +191,6 @@ void Scene_LevelSelection::Draw()
 				DrawTwoDigits(i + 1, tmp->get_rect());
 		}
 	}
+
+	DrawBestScore(BestScores[current_option + 1]);
 }

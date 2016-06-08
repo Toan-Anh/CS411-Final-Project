@@ -15,6 +15,7 @@ private:
 
 	void DrawOneDigit(unsigned const & number, vector<Vector2> const & rect);
 	void DrawTwoDigits(unsigned const & number, vector<Vector2> const & rect);
+	void DrawBestScore(unsigned const & score);
 public:
 	Scene_LevelSelection();
 	~Scene_LevelSelection();

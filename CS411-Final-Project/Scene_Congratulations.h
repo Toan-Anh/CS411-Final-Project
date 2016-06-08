@@ -1,6 +1,7 @@
 #pragma once
 #include "SceneManager.h"
 #include "KeyboardManager.h"
+#include "Scene_Start.h"
 
 class Scene_Congratulations : public Scene
 {

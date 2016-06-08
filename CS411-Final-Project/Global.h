@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_set>
+#include <unordered_map>
 using namespace std;
 
 /* ======================================================================
@@ -13,5 +14,6 @@ static const int HEIGHT_SCORE_NUM = 36;
 
 extern int Score;
 extern unordered_set<int> UnlockedLevels;
+extern unordered_map<int, int> BestScores;
 
 static const int N_LEVELS = 2;
