@@ -12,7 +12,7 @@ Scene_Menu::Scene_Menu()
 	button_state.push_back(Sprite("Button Selected"));
 	button_state.push_back(Sprite("Button Locked"));
 
-	options.push_back(Sprite("Back To Title"));
+	options.push_back(Sprite("Select Level"));
 	options.push_back(Sprite("Exit"));
 	options[0].set_position({ 212, 250 });
 	options[1].set_position({ 212, 120 });

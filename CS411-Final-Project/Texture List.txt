@@ -133,3 +133,6 @@ Button Locked Small
 Button Locked Lock Small
 ./Resource/Button/ButtonLockedLockSmall.png
 1
+Select Level
+./Resource/Select Level.png
+1
