@@ -99,10 +99,11 @@ void Scene_Level::Update(long long const & totalTime, long long const & elapsedT
 
 	if (_monster_killed == _monsters.size())
 	{
+		if (Score > BestScores[_level])
+			BestScores[_level] = Score;
+
 		if (_level < N_LEVELS)
 		{
-			if (Score > BestScores[_level])
-				BestScores[_level] = Score;
 			UnlockedLevels.insert(_level + 1);
 			BestScores[_level + 1] = 0;
 			//SceneManager::ChangeScene(new Scene_Level(_level + 1));

@@ -1,8 +1,17 @@
 #include "Scene_Congratulations.h"
+#include <fstream>
+using namespace std;
 
 Scene_Congratulations::Scene_Congratulations()
 {
 	_sprites.push_back(new Sprite("Congratulations"));
+	ofstream fout;
+	fout.open("GameData");
+	if (!fout.is_open())
+		return;
+	for (unordered_map<int, int>::const_iterator it = BestScores.cbegin(); it != BestScores.cend(); ++it)
+		fout << it->first << " " << it->second << endl;
+	fout.close();
 }
 
 Scene_Congratulations::~Scene_Congratulations()

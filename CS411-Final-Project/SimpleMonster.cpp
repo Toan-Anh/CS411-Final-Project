@@ -87,7 +87,7 @@ void SimpleMonster::move_forward()
 		Vector2 tmp = _move_path[_current_pos_index + 1];
 		if (_map.can_move(tmp))
 		{
-			if (_map.Get_Square(_rect[0]) != '4')
+			if (_map.Get_Square(_rect[0]) != '4' && _map.Get_Square(tmp) != '4')
 			{
 				_map.Change_Square(_rect[0], '0');
 				_map.Change_Square(tmp, '5');
@@ -112,7 +112,7 @@ void SimpleMonster::move_backward()
 		Vector2 tmp = _move_path[_current_pos_index - 1];
 		if (_map.can_move(tmp))
 		{
-			if (_map.Get_Square(_rect[0]) != '4')
+			if (_map.Get_Square(_rect[0]) != '4' && _map.Get_Square(tmp) != '4')
 			{
 				_map.Change_Square(_rect[0], '0');
 				_map.Change_Square(tmp, '5');
