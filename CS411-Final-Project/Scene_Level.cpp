@@ -104,8 +104,11 @@ void Scene_Level::Update(long long const & totalTime, long long const & elapsedT
 
 		if (_level < N_LEVELS)
 		{
-			UnlockedLevels.insert(_level + 1);
-			BestScores[_level + 1] = 0;
+			if (UnlockedLevels.find(_level + 1) == UnlockedLevels.end())
+			{
+				UnlockedLevels.insert(_level + 1);
+				BestScores[_level + 1] = 0;
+			}
 			//SceneManager::ChangeScene(new Scene_Level(_level + 1));
 			SceneManager::ReturnScene();
 		}

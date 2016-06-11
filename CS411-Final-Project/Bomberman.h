@@ -5,7 +5,7 @@
 #include "Scene_GameOver.h"
 #include "GameMap.h"
 
-static const int MOVE_STEP = 32;
+static const long long MOVE_TIME = 250;
 
 class Bomb;
 
@@ -19,12 +19,12 @@ class Bomberman : public Sprite
 	bool _isAlive;
 	list<Bomb*> _bombs;
 	GameMap& _map;
+	long long _move_time;
+	int _moving_dir;
+	bool _is_moving;
 
-	void move_left();
-	void move_right();
-	void move_up();
-	void move_down();
 	void put_bomb();
+	void UpdateMovement(long long const & totalTime, long long const & elapsedTime);
 
 public:
 

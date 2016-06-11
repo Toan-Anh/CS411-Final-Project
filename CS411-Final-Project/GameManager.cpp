@@ -51,6 +51,23 @@ void GameManager::Initialize(int * argcp, char ** argv, int const & win_width, i
 
 	SceneManager::AddScene(new Scene_Start());
 
+	// --- Load game data
+	UnlockedLevels.insert(1);
+	BestScores[1] = 0;
+
+	ifstream fin;
+	fin.open("GameData");
+	if (fin.is_open())
+	{
+		int level, best;
+		while (fin >> level >> best)
+		{
+			UnlockedLevels.insert(level);
+			BestScores[level] = best;
+		}
+		fin.close();
+	}
+
 	// --- Indicate that the game is running
 	_running = true;
 }

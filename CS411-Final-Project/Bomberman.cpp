@@ -1,13 +1,17 @@
 #include "Bomberman.h"
+#include <cmath>
+using namespace std;
 
 /* ======================================================================
  * Bomberman
  * =================================================================== */
 
-Bomberman::Bomberman(GameMap & game_map) : Sprite("Bomberman_down"), _map(game_map)
+Bomberman::Bomberman(GameMap & game_map) : Sprite("Bomberman"), _map(game_map)
 {
 	_numBomb = 1;
 	_isAlive = true;
+	_move_time = 0;
+	_moving_dir = 2;
 }
 
 void Bomberman::Update(long long const & totalTime, long long const & elapsedTime)
@@ -30,16 +34,9 @@ void Bomberman::Update(long long const & totalTime, long long const & elapsedTim
 
 	if (_isAlive)
 	{
-		if (KeyboardManager::is_special_pressed(GLUT_KEY_DOWN))
-			move_down();
-		else if (KeyboardManager::is_special_pressed(GLUT_KEY_UP))
-			move_up();
-		else if (KeyboardManager::is_special_pressed(GLUT_KEY_LEFT))
-			move_left();
-		else if (KeyboardManager::is_special_pressed(GLUT_KEY_RIGHT))
-			move_right();
+		UpdateMovement(totalTime, elapsedTime);
 
-		if (_map.Get_Square(_rect[0]) == '4' || 
+		if (_map.Get_Square(_rect[0]) == '4' ||
 			_map.Get_Square(_rect[0]) == '5')
 			_isAlive = false;
 
@@ -48,39 +45,102 @@ void Bomberman::Update(long long const & totalTime, long long const & elapsedTim
 	}
 }
 
+void Bomberman::UpdateMovement(long long const & totalTime, long long const & elapsedTime)
+{
+	if (!_is_moving)
+	{
+		if (KeyboardManager::is_special_pressed(GLUT_KEY_DOWN))
+		{
+			_moving_dir = 2;
+			if (!_map.can_move({ _rect[0].x, _rect[0].y - 32 }))
+				return;
+			_is_moving = true;
+		}
+		else if (KeyboardManager::is_special_pressed(GLUT_KEY_UP))
+		{
+			_moving_dir = 8;
+			if (!_map.can_move({ _rect[0].x, _rect[0].y + 32 }))
+				return;
+			_is_moving = true;
+		}
+		else if (KeyboardManager::is_special_pressed(GLUT_KEY_LEFT))
+		{
+			_moving_dir = 4;
+			if (!_map.can_move({ _rect[0].x - 32 , _rect[0].y }))
+				return;
+			_is_moving = true;
+		}
+		else if (KeyboardManager::is_special_pressed(GLUT_KEY_RIGHT))
+		{
+			_moving_dir = 6;
+			if (!_map.can_move({ _rect[0].x + 32, _rect[0].y }))
+				return;
+			_is_moving = true;
+		}
+	}
+	else
+	{
+		_move_time += elapsedTime;
+
+		double dx = 0, dy = 0, d = 32.0;
+		switch (_moving_dir)
+		{
+		case 2:
+			dy = -d * elapsedTime / MOVE_TIME;
+			break;
+		case 4:
+			dx = -d * elapsedTime / MOVE_TIME;
+			break;
+		case 6:
+			dx = d * elapsedTime / MOVE_TIME;
+			break;
+		case 8:
+			dy = d * elapsedTime / MOVE_TIME;
+			break;
+		default:
+			break;
+		}
+
+		double x = _rect[0].x + dx;
+		double y = _rect[0].y + dy;
+		if (_move_time > MOVE_TIME)
+		{
+			if (dx > 0)
+				x = round(x - d * (_move_time - MOVE_TIME) / MOVE_TIME);
+			else if (dx < 0)
+				x = round(x + d * (_move_time - MOVE_TIME) / MOVE_TIME);
+
+			if (dy > 0)
+				y = round(y - d * (_move_time - MOVE_TIME) / MOVE_TIME);
+			else if (dy < 0)
+				y = round(y + d * (_move_time - MOVE_TIME) / MOVE_TIME);
+		}
+		
+		set_position({ x, y });
+
+		if (_move_time >= MOVE_TIME)
+		{
+			_move_time = 0;
+			_is_moving = false;
+		}
+	}
+}
+
 void Bomberman::Draw()
 {
 	for (list<Bomb*>::iterator it = _bombs.begin(); !_bombs.empty() && it != _bombs.end(); ++it)
 		(*it)->Draw();
-	Sprite::Draw();
-}
+	
+	double dir_idx = (10 - _moving_dir) / 2 - 1;
+	double frame_idx = (int)(((double)_move_time / MOVE_TIME) * 4);
 
-void Bomberman::move_left()
-{
-	Vector2 pos = { _rect[0].x - MOVE_STEP, _rect[0].y };
-	if (_map.can_move(pos))
-		set_position(pos);
-}
-
-void Bomberman::move_right()
-{
-	Vector2 pos = { _rect[0].x + MOVE_STEP, _rect[0].y };
-	if (_map.can_move(pos))
-		set_position(pos);
-}
-
-void Bomberman::move_down()
-{
-	Vector2 pos = { _rect[0].x, _rect[0].y - MOVE_STEP };
-	if (_map.can_move(pos))
-		set_position(pos);
-}
-
-void Bomberman::move_up()
-{
-	Vector2 pos = { _rect[0].x, _rect[0].y + MOVE_STEP };
-	if (_map.can_move(pos))
-		set_position(pos);
+	TextureManager::BindTexture(_name);
+	glBegin(GL_QUADS);
+	glTexCoord2d(frame_idx / 4, dir_idx / 4); glVertex2d(_tmp_rect[0].x, _tmp_rect[0].y); // top left
+	glTexCoord2d((frame_idx + 1) / 4, dir_idx / 4); glVertex2d(_tmp_rect[0].x + 32, _tmp_rect[0].y); // top right
+	glTexCoord2d((frame_idx + 1) / 4, (dir_idx + 1) / 4); glVertex2d(_tmp_rect[0].x + 32, _tmp_rect[0].y + 32); // bottom right
+	glTexCoord2d(frame_idx / 4, (dir_idx + 1) / 4); glVertex2d(_tmp_rect[0].x, _tmp_rect[0].y + 32); // bottom left
+	glEnd();
 }
 
 void Bomberman::put_bomb()
@@ -88,7 +148,7 @@ void Bomberman::put_bomb()
 	if (_numBomb > 0)
 	{
 		--_numBomb;
-		_bombs.push_back(new Bomb(_rect[0], _map));
+		_bombs.push_back(new Bomb(_map.Position_Of_Nearest_Square(_rect[0]), _map));
 	}
 }
 
@@ -130,7 +190,7 @@ Bomb::~Bomb()
 			}
 		}
 	}
-	
+
 	_map.Change_Square(_rect[0], '0');
 }
 
@@ -142,7 +202,16 @@ void Bomb::Update(long long const & totalTime, long long const & elapsedTime)
 		detonate();
 
 	if (_count_down > 0)
+	{
 		_count_down -= elapsedTime;
+
+		double scale = 1 + 0.07 * cos(totalTime * PI / 300);
+		Matrix matrix;
+		matrix.Translate(-_rect[0].x - 16, -_rect[0].y - 16);
+		matrix.Scale(scale, scale);
+		matrix.Translate(_rect[0].x + 16, _rect[0].y + 16);
+		ApplyMatrix(matrix);
+	}
 	else
 	{
 		if (_explosion_animation_counter == 0)

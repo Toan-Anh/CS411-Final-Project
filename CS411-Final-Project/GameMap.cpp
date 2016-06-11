@@ -1,6 +1,8 @@
 #include "GameMap.h"
 #include <sstream>
 #include <fstream>
+#include <cmath>
+using namespace std;
 
 GameMap::GameMap(int const & level, Vector2 const & start)
 {
@@ -138,4 +140,12 @@ vector<int> GameMap::get_monster_info()
 Vector2 GameMap::Get_Position_From_Grid(int const & r, int const & c)
 {
 	return {_starting_pos.x + c * 32, _starting_pos.y + (_height - r - 1) * 32};
+}
+
+Vector2 GameMap::Position_Of_Nearest_Square(Vector2 const & pos)
+{
+	Vector2 result;
+	result.x = (int)(pos.x / 32) * 32;
+	result.y = (int)(pos.y / 32) * 32;
+	return result;
 }

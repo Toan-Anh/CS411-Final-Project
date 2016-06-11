@@ -186,18 +186,20 @@ Matrix& Matrix::Multiply(const Matrix &other)
 	return tmp;
 }
 
-void Matrix::TransformPoint(Vector2 &point) const
+Vector2 Matrix::TransformPoint(Vector2 point) const
 {
-	double x = point.x;
-	double y = point.y;
-	point.x = x * data[0][0] + y * data[1][0] + data[2][0];
-	point.y = x * data[0][1] + y * data[1][1] + data[2][1];
+	Vector2 result;
+	result.x = point.x * data[0][0] + point.y * data[1][0] + data[2][0];
+	result.y = point.x * data[0][1] + point.y * data[1][1] + data[2][1];
+	return result;
 }
 
-void Matrix::TransformPoints(vector<Vector2> &points) const
+vector<Vector2> Matrix::TransformPoints(vector<Vector2> points) const
 {
+	vector<Vector2> result;
 	for (unsigned int i = 0; i < points.size(); ++i)
-		TransformPoint(points[i]);
+		result.push_back(TransformPoint(points[i]));
+	return result;
 }
 
 Matrix& Matrix::operator*(const Matrix &other)

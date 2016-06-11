@@ -24,22 +24,6 @@ Scene_LevelSelection::Scene_LevelSelection()
 	for (int i = 0; i < N_LEVELS && i < 15; ++i)
 		option_positions.push_back({ (double)78 + (i % 5) * 92 + 20, (double)294 - (i / 5) * 87 });
 
-	UnlockedLevels.insert(1);
-	BestScores[1] = 0;
-
-	ifstream fin;
-	fin.open("GameData");
-	if (fin.is_open())
-	{
-		int level, best;
-		while (fin >> level >> best)
-		{
-			UnlockedLevels.insert(level);
-			BestScores[level] = best;
-		}
-		fin.close();
-	}
-
 	current_option = 0;
 	chosen_option = -1;
 	transition_wait_time = 150;

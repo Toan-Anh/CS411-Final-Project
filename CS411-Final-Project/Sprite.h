@@ -12,6 +12,7 @@ class Sprite
 protected:
 	Vector2 _size;
 	vector<Vector2> _rect;
+	vector<Vector2> _tmp_rect;
 	string _name;
 public:
 	Sprite(string const &name);

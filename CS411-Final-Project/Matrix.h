@@ -34,8 +34,8 @@ public:
 
 	Matrix& Multiply(const Matrix &other);
 
-	void TransformPoint(Vector2 &point) const;
-	void TransformPoints(vector<Vector2> &points) const;
+	Vector2 TransformPoint(Vector2 point) const;
+	vector<Vector2> TransformPoints(vector<Vector2> points) const;
 
 	Matrix& operator*(const Matrix &other);
 	Matrix& operator=(const Matrix &other);

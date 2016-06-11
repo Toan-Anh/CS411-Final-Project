@@ -28,5 +28,6 @@ public:
 	void Draw();
 	bool InBound(Vector2 const & pos);
 	Vector2 Get_Position_From_Grid(int const & r, int const & c);
+	Vector2 Position_Of_Nearest_Square(Vector2 const & pos);
 	vector<int> get_monster_info();
 };
