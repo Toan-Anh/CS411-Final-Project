@@ -145,7 +145,7 @@ Vector2 GameMap::Get_Position_From_Grid(int const & r, int const & c)
 Vector2 GameMap::Position_Of_Nearest_Square(Vector2 const & pos)
 {
 	Vector2 result;
-	result.x = (int)(pos.x / 32) * 32;
-	result.y = (int)(pos.y / 32) * 32;
+	result.x = (int)((pos.x + 16) / 32) * 32;
+	result.y = (int)((pos.y + 16) / 32) * 32;
 	return result;
 }

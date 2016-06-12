@@ -1,5 +1,6 @@
 #include "Bomberman.h"
 #include <cmath>
+#include <iostream>
 using namespace std;
 
 /* ======================================================================
@@ -56,13 +57,6 @@ void Bomberman::UpdateMovement(long long const & totalTime, long long const & el
 				return;
 			_is_moving = true;
 		}
-		else if (KeyboardManager::is_special_pressed(GLUT_KEY_UP))
-		{
-			_moving_dir = 8;
-			if (!_map.can_move({ _rect[0].x, _rect[0].y + 32 }))
-				return;
-			_is_moving = true;
-		}
 		else if (KeyboardManager::is_special_pressed(GLUT_KEY_LEFT))
 		{
 			_moving_dir = 4;
@@ -77,8 +71,16 @@ void Bomberman::UpdateMovement(long long const & totalTime, long long const & el
 				return;
 			_is_moving = true;
 		}
+		else if (KeyboardManager::is_special_pressed(GLUT_KEY_UP))
+		{
+			_moving_dir = 8;
+			if (!_map.can_move({ _rect[0].x, _rect[0].y + 32 }))
+				return;
+			_is_moving = true;
+		}
 	}
-	else
+
+	if (_is_moving)
 	{
 		_move_time += elapsedTime;
 
@@ -103,26 +105,25 @@ void Bomberman::UpdateMovement(long long const & totalTime, long long const & el
 
 		double x = _rect[0].x + dx;
 		double y = _rect[0].y + dy;
-		if (_move_time > MOVE_TIME)
+		if (_move_time >= MOVE_TIME)
 		{
 			if (dx > 0)
-				x = round(x - d * (_move_time - MOVE_TIME) / MOVE_TIME);
+				x = x - d * (_move_time - MOVE_TIME) / MOVE_TIME;
 			else if (dx < 0)
-				x = round(x + d * (_move_time - MOVE_TIME) / MOVE_TIME);
+				x = x + d * (_move_time - MOVE_TIME) / MOVE_TIME;
 
 			if (dy > 0)
-				y = round(y - d * (_move_time - MOVE_TIME) / MOVE_TIME);
+				y = y - d * (_move_time - MOVE_TIME) / MOVE_TIME;
 			else if (dy < 0)
-				y = round(y + d * (_move_time - MOVE_TIME) / MOVE_TIME);
+				y = y + d * (_move_time - MOVE_TIME) / MOVE_TIME;
+
+			_move_time = 0;
+			_is_moving = false;
+			x = round(x);
+			y = round(y);
 		}
 		
 		set_position({ x, y });
-
-		if (_move_time >= MOVE_TIME)
-		{
-			_move_time = 0;
-			_is_moving = false;
-		}
 	}
 }
 

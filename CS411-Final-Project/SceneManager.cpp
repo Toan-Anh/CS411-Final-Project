@@ -56,9 +56,9 @@ void SceneManager::SnapShot()
 
 void SceneManager::DrawSnapShot()
 {
-	glDepthMask(0);
-	glDrawBuffer(GL_FRONT);
+	glDepthMask(1);
+	glDrawBuffer(GL_BACK);
 	glRasterPos2i(0, 0);
 	glDrawPixels(WIDTH_WINDOW_SCREEN, HEIGHT_WINDOW_SCREEN, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
-	glDepthMask(1);
+	glDepthMask(0);
 }

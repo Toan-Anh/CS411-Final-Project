@@ -5,7 +5,7 @@
 #include "Scene_GameOver.h"
 #include "GameMap.h"
 
-static const long long MOVE_TIME = 250;
+static const long long MOVE_TIME = 320;
 
 class Bomb;
 

@@ -58,10 +58,6 @@ void Scene_GameOver::Update(long long const & totalTime, long long const & elaps
 		return;
 	}
 
-	if (KeyboardManager::is_key_pressed('\r') ||
-		KeyboardManager::is_key_pressed('\n'))
-		SceneManager::ReturnScene();
-
 	if (KeyboardManager::is_special_pressed(GLUT_KEY_RIGHT))
 		selected = (selected + 1) % 2;
 	else if (KeyboardManager::is_special_pressed(GLUT_KEY_LEFT))
